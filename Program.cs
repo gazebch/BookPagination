@@ -36,20 +36,13 @@ class Program
         while (true)
         {
             numPage = int.Parse(Console.ReadLine());
-            if (pageCount >= numPage) break;
+            if (pageCount >= numPage && numPage != 0) break;
             else Console.WriteLine("Такой страницы не существует. Введите верный номер страницы");
         }
         Console.WriteLine();
-        if (numPage == 1)
-        {
-            var finalViewPage = book.Take(pageWidth);
-            ViewCompositionBook(finalViewPage);
-        }
-        else
-        {
-            var finalViewPage = book.Skip((numPage - 1) * pageWidth).Take(pageWidth);
-            ViewCompositionBook(finalViewPage);
-        }
+        var finalViewPage = book.Skip((numPage - 1) * pageWidth).Take(pageWidth);
+        ViewCompositionBook(finalViewPage);
+
     }
 
     public static void ViewCompositionBook(IEnumerable<int> book)
