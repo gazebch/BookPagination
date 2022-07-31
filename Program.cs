@@ -35,8 +35,8 @@ class Program
         int numPage;
         while (true)
         {
-            numPage = int.Parse(Console.ReadLine());
-            if (pageCount >= numPage && numPage != 0) break;
+            var tryNumPage = int.TryParse(Console.ReadLine(), out numPage);
+            if (tryNumPage && pageCount >= numPage && numPage > 0) break;
             else Console.WriteLine("Такой страницы не существует. Введите верный номер страницы");
         }
         Console.WriteLine();
